@@ -59,9 +59,13 @@ type AudioProvider struct {
 	source io.Reader
 	pipe   io.Closer
 	d      *ogg.PacketDecoder
+	Paused bool
 }
 
 func (p *AudioProvider) ProvideOpusFrame() ([]byte, error) {
+	if p.Paused {
+		return nil, nil
+	}
 	data, _, err := p.d.Decode()
 	if err != nil {
 		return nil, err
