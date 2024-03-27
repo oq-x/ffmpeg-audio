@@ -1,4 +1,4 @@
-module github.com/disgoorg/ffmpeg-audio
+module github.com/oq-x/ffmpeg-audio
 
 go 1.20
 
